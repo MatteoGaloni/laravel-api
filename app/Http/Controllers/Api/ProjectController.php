@@ -22,4 +22,16 @@ class ProjectController extends Controller
         ];
         return response()->json($response);
     }
+
+    public function show($id)
+    {
+        $project = Project::with("type", "technologies")->find($id);
+
+        $response = [
+            'success' => true,
+            'results' => $project,
+            'message' => 'Everything is going to be ok',
+        ];
+        return response()->json($response);
+    }
 }
