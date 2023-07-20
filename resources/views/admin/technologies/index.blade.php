@@ -4,7 +4,7 @@
     <div class="container-fluid mt-4">
         <div class="row justify-content-between">
             @foreach ($technologies as $technology)
-                <div class="card p-0 mb-4" style="width: 18rem;">
+                <div class="card p-3 mb-4" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{ $technology->name }}</h5>
                     </div>

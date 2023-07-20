@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Create Project</h1>
+    <h1 class="text-white text-center">Create Project</h1>
     @if ($errors->any())
         <div class="alert-danger alert">
             @foreach ($errors->all() as $error)
@@ -15,14 +15,14 @@
         @csrf
 
         <div class="form-group">
-            <label for="title">Title</label>
+            <label class="text-white" for="title">Title</label>
             <input type="text" name="title" value="{{ old('title') }}" id="title"
                 class="form-control @error('title') is-invalid" @enderror>
         </div>
 
 
         <div class="form-group">
-            <label for="type_id">Categoria</label>
+            <label class="text-white" for="type_id">Categoria</label>
             <select class="form-select" name="type_id">
                 <option selected disabled>Choose project type</option>
                 @foreach ($types as $type)
@@ -35,7 +35,7 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="technologies[]" value="{{ $technology->id }}"
                         id="technologies{{ $i }}">
-                    <label class="form-check-label" for="technologies{{ $i }}">
+                    <label class=" text-white form-check-label" for="technologies{{ $i }}">
                         {{ $technology->name }}
                     </label>
                 </div>
@@ -44,15 +44,11 @@
 
 
         <div class="form-group">
-            <label for="description">Description</label>
+            <label class="text-white" for="description">Description</label>
             <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
         </div>
-        {{-- <div class="form-group">
-            <label for="img">URL IMG</label>
-            <input type="text" name="img" class="form-control" id="img" placeholder="Password">
-        </div> --}}
         <div class="form-group">
-            <label for="img">Inserisci un file</label>
+            <label class="text-white" for="img">Inserisci un file</label>
             <input type="file" name="img" class="form-control" id="img">
         </div>
 
