@@ -38,7 +38,8 @@ class ProjectSeeder extends Seeder
             $newProject = new Project();
             $newProject->title = $projectsName[$i];
             $newProject->description = $faker->text(50);
-            $newProject->img = $faker->imageUrl(800, 600,  $newProject->title);
+            $newProject->img = 'placeholders/placeholder.png';
+            // $newProject->img = $faker->imageUrl(800, 600,  $newProject->title);
             $newProject->type_id = rand(1, count($types));
             $newProject->save();
 

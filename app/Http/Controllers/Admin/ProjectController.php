@@ -22,8 +22,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
         $technologies = Technology::all();
-        // puoi aggiungere un metodo per visualizzare in ordine cronologico 
-
+        // puoi aggiungere un metodo per visualizzare in ordine cronologico
         return view("admin.projects.index", compact("projects", 'technologies'));
     }
 
@@ -100,7 +99,11 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        Storage::delete($project->img);
+
+        if ($project->img != "placeholders/placeholder.png") {
+            Storage::delete($project->img);
+        }
+
         $data = $request->validated();
         if ($request->hasFile('img')) {
             $data['img'] = Storage::put('uploads', $request->file('img'));
