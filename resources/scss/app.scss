@@ -1,7 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
 
 body{
-    background-color: rgb(35, 65, 65);
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/1022/811/737/3-316-16-9-aspect-ratio-s-sfw-wallpaper-preview.jpg);
+    height: 100vh;
 }
+#welcome-navbar{
+    height: 10vh;
+}
+
+#jumbotron{
+    height: 90vh;
+    background-size: contain;       
+}
+
 
 

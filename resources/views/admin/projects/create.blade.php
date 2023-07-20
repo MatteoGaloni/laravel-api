@@ -30,16 +30,17 @@
                 @endforeach
             </select>
         </div>
-
-        @foreach ($technologies as $i => $technology)
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="technologies[]" value="{{ $technology->id }}"
-                    id="technologies{{ $i }}">
-                <label class="form-check-label" for="technologies{{ $i }}">
-                    {{ $technology->name }}
-                </label>
-            </div>
-        @endforeach
+        <div class="d-flex justify-content-around">
+            @foreach ($technologies as $i => $technology)
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="technologies[]" value="{{ $technology->id }}"
+                        id="technologies{{ $i }}">
+                    <label class="form-check-label" for="technologies{{ $i }}">
+                        {{ $technology->name }}
+                    </label>
+                </div>
+            @endforeach
+        </div>
 
 
         <div class="form-group">
