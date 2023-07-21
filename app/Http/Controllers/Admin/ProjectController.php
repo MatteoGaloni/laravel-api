@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Mail\NewContact;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
@@ -55,6 +56,10 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
+
+
+        // $newMail = new NewContact();
+        // Mail::to('mtgaloni@gmail.com')->send($newMail);
 
         if (array_key_exists('technologies', $data)) {
             $newProject->technologies()->sync($data['technologies']);
