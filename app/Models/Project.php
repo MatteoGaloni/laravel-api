@@ -16,7 +16,7 @@ class Project extends Model
         'description',
         'img',
         'type_id',
-        'user_id'
+        'user_id',
     ];
 
     public function type()

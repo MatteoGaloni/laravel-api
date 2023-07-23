@@ -38,7 +38,7 @@ class ContactRequestController extends Controller
         $newContactRequest->save();
 
         $newMail = new NewContact($myData);
-        Mail::to('matteo@gmail.com')->send($newMail);
+        Mail::to($newContactRequest->project->user->email)->send($newMail);
 
         return response()->json(
             [

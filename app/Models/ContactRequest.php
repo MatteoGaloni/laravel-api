@@ -13,6 +13,7 @@ class ContactRequest extends Model
         'name',
         'email',
         'message',
+        'project_id'
     ];
 
 
