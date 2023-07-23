@@ -7,29 +7,32 @@ use App\Mail\NewContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ContactRequest;
+use App\Models\Project;
 use Illuminate\Support\Facades\Mail;
 
 class ContactRequestController extends Controller
 {
-    public function store(Request $request){
-        // $data = $request->validated();
+    public function store(Request $request, $id)
+    {
+        // $project = Project::where("id", "=", $id)->first();
         $data = $request->all();
-        $validator = Validator::make($data,[
-            'name'=> 'required',
-            'email'=> 'required|email',
-            'message'=> 'required'
+        $validator = Validator::make($data, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(
                 [
-                'success'=>false,
-                'errors'=> $validator->errors()
+                    'success' => false,
+                    'errors' => $validator->errors()
                 ]
             );
         }
 
         $myData = $validator->validated();
+        $myData['project_id'] = $id;
         $newContactRequest = new ContactRequest();
         $newContactRequest->fill($myData);
         $newContactRequest->save();
@@ -39,8 +42,8 @@ class ContactRequestController extends Controller
 
         return response()->json(
             [
-                'success'=>true
+                'success' => true
             ]
-            );
+        );
     }
 }

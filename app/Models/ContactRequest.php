@@ -14,4 +14,10 @@ class ContactRequest extends Model
         'email',
         'message',
     ];
+
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

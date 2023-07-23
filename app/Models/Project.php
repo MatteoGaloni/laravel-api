@@ -33,4 +33,9 @@ class Project extends Model
     {
         return $this->belongsToMany(Technology::class);
     }
+
+    public function contactRequests()
+    {
+        return $this->hasMany(ContactRequest::class);
+    }
 }
