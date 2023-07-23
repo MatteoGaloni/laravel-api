@@ -21,7 +21,7 @@ class NewContact extends Mailable
      */
     public function __construct($_contactData)
     {
-        $this->contactData = $_contactData;
+        $this->contactData= $_contactData;
     }
 
     /**
@@ -33,7 +33,7 @@ class NewContact extends Mailable
     {
         return new Envelope(
             subject: 'New Contact',
-            replyTo: $this->contactData->email
+            replyTo: $this->contactData['email']
         );
     }
 

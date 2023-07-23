@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Mail\NewContact;
 use App\Models\Technology;
 use App\Models\Type;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -20,8 +21,9 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $projects = Project::all();
+    {   
+        $user = Auth::user()->id;
+        $projects = Project::where('user_id', $user)->get();
         $technologies = Technology::all();
         // puoi aggiungere un metodo per visualizzare in ordine cronologico
         return view("admin.projects.index", compact("projects", 'technologies'));
@@ -50,6 +52,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
+        $data['user_id']= Auth::user()->id;
         if ($request->hasFile('img')) {
             $data['img'] = Storage::put('uploads', $request->file('img'));
         }
@@ -110,6 +113,7 @@ class ProjectController extends Controller
         }
 
         $data = $request->validated();
+        $data['user_id']= Auth::user()->id;
         if ($request->hasFile('img')) {
             $data['img'] = Storage::put('uploads', $request->file('img'));
         }

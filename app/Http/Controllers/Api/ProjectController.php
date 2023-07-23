@@ -11,7 +11,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with("type", "technologies")->paginate(4);
+        $projects = Project::with("type", "technologies", "user")->paginate(4);
         // $types = Type::all();
 
         $response = [
@@ -25,7 +25,7 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        $project = Project::with("type", "technologies")->find($id);
+        $project = Project::with("type", "technologies", "user")->find($id);
 
         $response = [
             'success' => true,

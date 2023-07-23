@@ -15,7 +15,7 @@
                         <h5 class="card-title">{{ $project->title }}</h5>
                         <p class="card-text">{{ $project->description }}</p>
                         <h5>Tipo: </h5>
-                        <p>{{ $project->type->name }} </p>
+                        <p>{{ $project->type ? $project->type->name : 'Il nome non è disponibile' }} </p>
                         <div class="d-flex flex-column">
                             <h5>Tecnologia:</h5>
                             <ul>
